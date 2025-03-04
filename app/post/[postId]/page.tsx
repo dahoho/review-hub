@@ -1,8 +1,10 @@
 import { CommentForm } from "@/components/commentForm";
+import { CommentOperation } from "@/components/commentOperation";
 import { LayoutContainer } from "@/components/layout/layout/container";
 import { MainLayout } from "@/components/layout/mainLayout";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { getCurrentUser } from "@/lib/session";
 import { fetchCommentsByPostId } from "@/service/commentService";
 import { fetchPostById } from "@/service/postService";
 import dayjs from "dayjs";
@@ -16,6 +18,8 @@ type PostDetailPageProps = {
 export default async function PostDetailPage({ params }: PostDetailPageProps) {
   const { postId } = await params;
   const post = await fetchPostById(postId);
+  // ユーザーのセッション情報を取得
+  const user = await getCurrentUser();
 
   // 記事が見つからなかった場合、404 ページを表示
   if (!post) notFound();
@@ -68,6 +72,9 @@ export default async function PostDetailPage({ params }: PostDetailPageProps) {
                       />
                     </Avatar>
                     <p className="text-sm">{comment.author.name}</p>
+                    {user?.id === comment.authorId && (
+                      <CommentOperation commentId={comment.id} />
+                    )}
                   </div>
                   <time
                     dateTime={dayjs(comment.createdAt).format(
