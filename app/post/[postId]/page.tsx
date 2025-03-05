@@ -39,7 +39,7 @@ export default async function PostDetailPage({ params }: PostDetailPageProps) {
           </div>
           <time
             dateTime={dayjs(post.createdAt).format(DATE_FORMAT)}
-            className="text-md text-gray-500 mt-4 block"
+            className="text-sm text-gray-500 mt-4 block"
           >
             {dayjs(post.createdAt).format(DATE_FORMAT)}
           </time>

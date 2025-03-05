@@ -36,22 +36,22 @@ export const PostItemPresentational = ({
           </Avatar>
           <p className="text-sm">{post.author.name}</p>
           {isDashboard && (
-            <p
-              className={`text-xs p-1 border ${
+            <Badge
+              className={`text-xs border bg-transparent ${
                 post.published
                   ? "text-green-600 border-green-600"
                   : "text-red-600 border-red-600"
               }`}
             >
               {post.published ? "公開中" : "下書き"}
-            </p>
+            </Badge>
           )}
         </div>
         {isDashboard && <PostOperation postId={post.id} />}
       </div>
       <time
         dateTime={dayjs(post.createdAt).format(DATE_FORMAT)}
-        className="text-xs text-gray-500 mt-4 block"
+        className="text-sm text-gray-500 mt-4 block"
       >
         {dayjs(post.createdAt).format(DATE_FORMAT)}
       </time>
