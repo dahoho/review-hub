@@ -15,9 +15,9 @@ type ProfilePostContainerType = {
 
 export const ProfilePost = ({ post }: ProfilePostContainerType) => {
   return (
-    <section className="mt-16">
+    <section className="mt-22">
       <h2 className="text-3xl font-bold">記事一覧</h2>
-      <div className="mt-8">
+      <div className="mt-14">
         <PostList post={post} />
       </div>
     </section>

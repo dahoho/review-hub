@@ -18,10 +18,10 @@ export default async function DashboardPage() {
   return (
     <LayoutContainer user={user}>
       <MainLayout>
-        <div className="px-5 mt-14">
+        <div className="px-5">
           <h2 className="text-3xl font-bold">記事の管理</h2>
         </div>
-        <div className="mt-6">
+        <div className="mt-12">
           <PostList post={post} />
         </div>
       </MainLayout>

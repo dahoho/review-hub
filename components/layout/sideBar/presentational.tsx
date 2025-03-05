@@ -24,7 +24,7 @@ export const SideBarPresentational = ({
   return (
     <>
       <aside className="md:h-screen md:w-[180px] hidden md:block">
-        <ul className="px-5 py-8 flex flex-col gap-5">
+        <ul className="px-5 py-10 flex flex-col gap-5">
           {pathname === "/" ? (
             CATEGORY_MENU_ITEMS.map((item) => (
               <li key={item.name}>

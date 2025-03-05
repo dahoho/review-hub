@@ -9,7 +9,7 @@ export const Profile = ({ user }: ProfilePropsType) => {
   if (!user) return null;
 
   return (
-    <section className="mt-8">
+    <section>
       <h2 className="text-3xl font-bold">プロフィール</h2>
       <div className="flex gap-4 mt-14">
         <Avatar>
