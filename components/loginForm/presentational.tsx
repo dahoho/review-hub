@@ -42,14 +42,12 @@ export const LoginFormPresentational = ({
       onSubmit={handleSubmit(onSubmit)}
       className="w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-5"
     >
-      <div className="md:max-w-sm mx-auto flex flex-col gap-4">
-        <h1 className="text-lg font-bold text-center">ログイン</h1>
-        <div className="flex flex-col gap-4 mt-4">
-          <Email register={register} />
-        </div>
+      <div className="bg-white shadow-lg rounded-lg md:max-w-md mx-auto p-8 flex flex-col space-y-6">
+        <h1 className="text-2xl font-bold text-center">ログイン</h1>
+        <Email register={register} />
         <div className="flex flex-col gap-4">
           <LoginButton
-            text="Gihub"
+            text="GitHub"
             isLoading={isGithubLoading}
             onClick={() => {
               setIsGithubLoading(true);
