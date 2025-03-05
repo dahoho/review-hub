@@ -41,7 +41,7 @@ export default async function PostDetailPage({ params }: PostDetailPageProps) {
             dateTime={dayjs(post.createdAt).format(DATE_FORMAT)}
             className="text-md text-gray-500 mt-4 block"
           >
-            {dayjs(post.createdAt).format("DATE_FORMAT")}
+            {dayjs(post.createdAt).format(DATE_FORMAT)}
           </time>
           <h2 className="text-3xl font-bold mt-6">{post.title}</h2>
           <ul className="flex items-center gap-2 mt-4">
