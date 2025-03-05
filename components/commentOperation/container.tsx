@@ -5,10 +5,12 @@ import { useDeleteComment } from "@/hooks/useDeleteComment";
 
 type PostOperationContainerType = {
   commentId: string;
+  handleEditing: () => void;
 };
 
 export const CommentOperationContainer = ({
   commentId,
+  handleEditing,
 }: PostOperationContainerType) => {
   const {
     deleteComment,
@@ -26,6 +28,7 @@ export const CommentOperationContainer = ({
       setShowDialog={setShowDialog}
       isDeleteLoading={isDeleteLoading}
       setIsDeleteLoading={setIsDeleteLoading}
+      handleEditing={handleEditing}
     />
   );
 };

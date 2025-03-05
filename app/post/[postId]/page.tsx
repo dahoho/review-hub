@@ -1,5 +1,5 @@
 import { CommentForm } from "@/components/commentForm";
-import { CommentOperation } from "@/components/commentOperation";
+import { CommentList } from "@/components/commentList/CommentList";
 import { LayoutContainer } from "@/components/layout/layout/container";
 import { MainLayout } from "@/components/layout/mainLayout";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
@@ -63,34 +63,12 @@ export default async function PostDetailPage({ params }: PostDetailPageProps) {
           ) : (
             <ul className="mt-12 flex flex-col gap-12">
               {comments.map((comment) => (
-                <li key={comment.id}>
-                  <div className="flex items-center gap-2">
-                    <Avatar>
-                      <AvatarImage
-                        src={comment.author.image}
-                        alt={comment.author.name}
-                      />
-                    </Avatar>
-                    <p className="text-sm">{comment.author.name}</p>
-                    {user?.id === comment.authorId && (
-                      <CommentOperation commentId={comment.id} />
-                    )}
-                  </div>
-                  <time
-                    dateTime={dayjs(comment.createdAt).format(
-                      "YYYY-MM-DD-HH:mm"
-                    )}
-                    className="text-md text-gray-500 mt-4 block"
-                  >
-                    {dayjs(post.createdAt).format("YYYY-MM-DD-HH:mm")}
-                  </time>
-                  <div
-                    className="prose mt-6"
-                    dangerouslySetInnerHTML={{
-                      __html: String(comment.content),
-                    }}
-                  />
-                </li>
+                <CommentList
+                  key={comment.id}
+                  initialComment={comment}
+                  user={user}
+                  post={post}
+                />
               ))}
             </ul>
           )}

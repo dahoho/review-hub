@@ -18,7 +18,7 @@ export const HeaderPresentational = ({
   return (
     <header className="h-14 flex items-center justify-between px-5 border-b border-gray-200">
       <h1 className="md:text-xl font-bold">
-        <Link href="/">ReviewHub</Link>
+        <Link href="/">Review Hub</Link>
       </h1>
       <div className="flex items-center gap-4">
         <Search className="md:w-6 w-5 cursor-pointer" />

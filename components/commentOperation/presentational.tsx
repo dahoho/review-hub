@@ -1,5 +1,4 @@
 import { EllipsisVertical, Loader2, Trash2 } from "lucide-react";
-import Link from "next/link";
 
 import {
   AlertDialog,
@@ -28,6 +27,7 @@ type CommentOperationPresentationalType = {
   setShowDialog: Dispatch<SetStateAction<boolean>>;
   isDeleteLoading: boolean;
   setIsDeleteLoading: Dispatch<SetStateAction<boolean>>;
+  handleEditing: () => void;
 };
 
 export const CommentOperationPresentational = ({
@@ -37,6 +37,7 @@ export const CommentOperationPresentational = ({
   deleteComment,
   isDeleteLoading,
   setIsDeleteLoading,
+  handleEditing,
 }: CommentOperationPresentationalType) => {
   return (
     <div>
@@ -45,8 +46,8 @@ export const CommentOperationPresentational = ({
           <EllipsisVertical className="w-5 h-5 cursor-pointer" />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem>
-            <Link href={`/editor/${commentId}`}>編集</Link>
+          <DropdownMenuItem onClick={handleEditing}>
+            <span className="cursor-pointer">編集</span>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
