@@ -13,4 +13,4 @@ export const CATEGORY_MENU_ITEMS = [
   },
 ];
 
-export const DATE_FORMAT = "YYYY-MM-DD-HH:mm";
+export const DATE_FORMAT = "YYYY年MM月DD日HH:mm";
