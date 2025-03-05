@@ -12,3 +12,5 @@ export const CATEGORY_MENU_ITEMS = [
     name: "Next.js",
   },
 ];
+
+export const DATE_FORMAT = "YYYY-MM-DD-HH:mm";

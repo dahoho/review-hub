@@ -3,6 +3,7 @@
 import { CommentOperation } from "@/components/commentOperation";
 import { InlineCommentEditor } from "@/components/inlineCommentEditor";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { DATE_FORMAT } from "@/constans";
 import { useCommentEditing } from "@/hooks/useCommentEditing";
 
 import dayjs from "dayjs";
@@ -53,10 +54,10 @@ export const CommentList = ({
         )}
       </div>
       <time
-        dateTime={dayjs(comment.createdAt).format("YYYY-MM-DD-HH:mm")}
+        dateTime={dayjs(comment.createdAt).format(DATE_FORMAT)}
         className="text-md text-gray-500 mt-4 block"
       >
-        {dayjs(post.createdAt).format("YYYY-MM-DD-HH:mm")}
+        {dayjs(post.createdAt).format(DATE_FORMAT)}
       </time>
       {isEditing ? (
         <InlineCommentEditor

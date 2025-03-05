@@ -8,6 +8,7 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 import { MessageCircle } from "lucide-react";
 import { PostOperation } from "@/components/postOperation";
+import { DATE_FORMAT } from "@/constans";
 
 type PostWithAuthor = Post & {
   author: {
@@ -49,10 +50,10 @@ export const PostItemPresentational = ({
         {isDashboard && <PostOperation postId={post.id} />}
       </div>
       <time
-        dateTime={dayjs(post.createdAt).format("YYYY-MM-DD-HH:mm")}
+        dateTime={dayjs(post.createdAt).format(DATE_FORMAT)}
         className="text-xs text-gray-500 mt-4 block"
       >
-        {dayjs(post.createdAt).format("YYYY-MM-DD-HH:mm")}
+        {dayjs(post.createdAt).format(DATE_FORMAT)}
       </time>
       <Link className="block" href={`/post/${post.id}`}>
         <p className="text-lg font-bold hover:underline mt-4">{post.title}</p>

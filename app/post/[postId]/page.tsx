@@ -4,6 +4,7 @@ import { LayoutContainer } from "@/components/layout/layout/container";
 import { MainLayout } from "@/components/layout/mainLayout";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { DATE_FORMAT } from "@/constans";
 import { getCurrentUser } from "@/lib/session";
 import { fetchCommentsByPostId } from "@/service/commentService";
 import { fetchPostById } from "@/service/postService";
@@ -37,10 +38,10 @@ export default async function PostDetailPage({ params }: PostDetailPageProps) {
             <p className="text-sm">{post.author.name}</p>
           </div>
           <time
-            dateTime={dayjs(post.createdAt).format("YYYY-MM-DD-HH:mm")}
+            dateTime={dayjs(post.createdAt).format(DATE_FORMAT)}
             className="text-md text-gray-500 mt-4 block"
           >
-            {dayjs(post.createdAt).format("YYYY-MM-DD-HH:mm")}
+            {dayjs(post.createdAt).format("DATE_FORMAT")}
           </time>
           <h2 className="text-3xl font-bold mt-6">{post.title}</h2>
           <ul className="flex items-center gap-2 mt-4">
