@@ -18,7 +18,7 @@ export const Profile = ({ user }: ProfilePropsType) => {
         <div>
           <p className="font-bold">{user.name ?? ""}</p>
           <p className="mt-2 leading-7">
-            自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。
+            フロントエンドエンジニア。React が好きです。
           </p>
         </div>
       </div>

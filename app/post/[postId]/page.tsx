@@ -35,11 +35,11 @@ export default async function PostDetailPage({ params }: PostDetailPageProps) {
             <Avatar>
               <AvatarImage src={post.author.image} alt={post.author.name} />
             </Avatar>
-            <p className="text-sm">{post.author.name}</p>
+            <p className="text-xs">{post.author.name}</p>
           </div>
           <time
             dateTime={dayjs(post.createdAt).format(DATE_FORMAT)}
-            className="text-sm text-gray-500 mt-4 block"
+            className="text-xs text-gray-500 mt-4 block"
           >
             {dayjs(post.createdAt).format(DATE_FORMAT)}
           </time>

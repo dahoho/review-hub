@@ -1,6 +1,5 @@
 "use client";
 
-import dayjs from "dayjs";
 import Link from "next/link";
 import { Post } from "@prisma/client";
 import { Badge } from "@/components/ui/badge";
@@ -8,7 +7,6 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 import { MessageCircle } from "lucide-react";
 import { PostOperation } from "@/components/postOperation";
-import { DATE_FORMAT } from "@/constans";
 
 type PostWithAuthor = Post & {
   author: {
@@ -28,7 +26,7 @@ export const PostItemPresentational = ({
   isDashboard,
 }: PostItemPresentationalType) => {
   return (
-    <li key={post.id} className="p-5">
+    <li key={post.id} className="p-6">
       <div className="flex items-center gap-2 justify-between">
         <div className="flex items-center gap-2">
           <Avatar>
@@ -49,26 +47,22 @@ export const PostItemPresentational = ({
         </div>
         {isDashboard && <PostOperation postId={post.id} />}
       </div>
-      <time
-        dateTime={dayjs(post.createdAt).format(DATE_FORMAT)}
-        className="text-sm text-gray-500 mt-4 block"
-      >
-        {dayjs(post.createdAt).format(DATE_FORMAT)}
-      </time>
       <Link className="block" href={`/post/${post.id}`}>
-        <p className="text-lg font-bold hover:underline mt-4">{post.title}</p>
+        <p className="text-xl font-bold hover:underline mt-4">{post.title}</p>
       </Link>
-      <p className="text-sm mt-4 flex items-center gap-1">
-        <MessageCircle size={18} />
-        {post.numberOfAnswers}
-      </p>
-      <ul className="flex items-center gap-2 mt-2.5">
-        {post.tags.map((tag) => (
-          <li key={tag}>
-            <Badge variant="outline">{tag}</Badge>
-          </li>
-        ))}
-      </ul>
+      <div className="flex gap-2 mt-4 items-center justify-between">
+        <ul className="flex items-center gap-2">
+          {post.tags.map((tag) => (
+            <li key={tag}>
+              <Badge variant="outline">{tag}</Badge>
+            </li>
+          ))}
+        </ul>
+        <p className="text-sm flex items-center gap-1">
+          <MessageCircle size={18} />
+          {post.numberOfAnswers}
+        </p>
+      </div>
     </li>
   );
 };
