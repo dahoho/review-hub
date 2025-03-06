@@ -9,7 +9,19 @@ export const CATEGORY_MENU_ITEMS = [
     name: "TypeScript",
   },
   {
-    name: "Next.js",
+    name: "Python",
+  },
+  {
+    name: "Ruby on Rails",
+  },
+  {
+    name: "PHP",
+  },
+  {
+    name: "HTML",
+  },
+  {
+    name: "CSS",
   },
 ];
 
