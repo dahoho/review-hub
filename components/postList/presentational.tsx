@@ -19,13 +19,13 @@ type PostListPresentationalType = {
 export const PostListPresentational = ({
   posts,
 }: PostListPresentationalType) => {
-  return (
+  return posts.length ? (
     <ul className="flex flex-col gap-4 divide-y divide-gray-200 border-b border-gray-200">
-      {posts.length ? (
-        posts.map((post) => <PostItem key={post.id} post={post} />)
-      ) : (
-        <p className="text-center mt-8">記事が見つかりませんでした。</p>
-      )}
+      {posts.map((post) => (
+        <PostItem key={post.id} post={post} />
+      ))}
     </ul>
+  ) : (
+    <p className="text-center mt-8">記事が見つかりませんでした。</p>
   );
 };
