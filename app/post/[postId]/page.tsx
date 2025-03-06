@@ -30,39 +30,37 @@ export default async function PostDetailPage({ params }: PostDetailPageProps) {
   return (
     <LayoutContainer>
       <MainLayout>
-        <div className="px-5 py-12">
-          <div className="flex items-center gap-2">
-            <Avatar>
-              <AvatarImage
-                src={post.author.image ?? ""}
-                alt={post.author.name ?? ""}
-              />
-            </Avatar>
-            <p className="text-xs">{post.author.name}</p>
-          </div>
-          <time
-            dateTime={dayjs(post.createdAt).format(DATE_FORMAT)}
-            className="text-xs text-gray-500 mt-4 block"
-          >
-            {dayjs(post.createdAt).format(DATE_FORMAT)}
-          </time>
-          <h2 className="text-3xl font-bold mt-6">{post.title}</h2>
-          <ul className="flex items-center gap-2 mt-4">
-            {post.tags.map((tag) => (
-              <li key={tag}>
-                <Badge variant="outline" className="border border-primary">
-                  {tag}
-                </Badge>
-              </li>
-            ))}
-          </ul>
-          <div
-            className="prose mt-12"
-            dangerouslySetInnerHTML={{ __html: String(post.content) }}
-          />
+        <div className="flex items-center gap-2">
+          <Avatar>
+            <AvatarImage
+              src={post.author.image ?? ""}
+              alt={post.author.name ?? ""}
+            />
+          </Avatar>
+          <p className="text-xs">{post.author.name}</p>
         </div>
+        <time
+          dateTime={dayjs(post.createdAt).format(DATE_FORMAT)}
+          className="text-xs text-gray-500 mt-4 block"
+        >
+          {dayjs(post.createdAt).format(DATE_FORMAT)}
+        </time>
+        <h2 className="text-3xl font-bold mt-6">{post.title}</h2>
+        <ul className="flex items-center gap-2 mt-4">
+          {post.tags.map((tag) => (
+            <li key={tag}>
+              <Badge variant="outline" className="border border-primary">
+                {tag}
+              </Badge>
+            </li>
+          ))}
+        </ul>
+        <div
+          className="prose mt-12"
+          dangerouslySetInnerHTML={{ __html: String(post.content) }}
+        />
         {/* コメント一覧 */}
-        <section className="mt-12 px-5">
+        <section className="mt-12">
           <h3 className="text-2xl font-bold mb-4">コメント</h3>
           {comments.length === 0 ? (
             <p>コメントはまだありません。</p>

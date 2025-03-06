@@ -19,10 +19,8 @@ export default async function ProfilePage() {
   return (
     <LayoutContainer user={user}>
       <MainLayout>
-        <div className="px-5">
-          <Profile user={user} />
-          <ProfilePost post={post} />
-        </div>
+        <Profile user={user} />
+        <ProfilePost post={post} />
       </MainLayout>
     </LayoutContainer>
   );

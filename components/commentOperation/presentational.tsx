@@ -47,7 +47,7 @@ export const CommentOperationPresentational = ({
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuItem onClick={handleEditing}>
-            <span className="cursor-pointer">編集</span>
+            <span className="cursor-pointer block w-full">編集</span>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem

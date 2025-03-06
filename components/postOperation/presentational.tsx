@@ -46,7 +46,9 @@ export const PostOperationPresentational = ({
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuItem>
-            <Link href={`/editor/${postId}`}>編集</Link>
+            <Link href={`/editor/${postId}`} className="block w-full">
+              <span>編集</span>
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
