@@ -57,7 +57,9 @@ export const PostItemPresentational = ({
         <ul className="flex items-center gap-2">
           {post.tags.map((tag) => (
             <li key={tag}>
-              <Badge variant="outline">{tag}</Badge>
+              <Badge variant="outline" className="border border-primary">
+                {tag}
+              </Badge>
             </li>
           ))}
         </ul>

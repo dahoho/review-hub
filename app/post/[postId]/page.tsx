@@ -50,7 +50,9 @@ export default async function PostDetailPage({ params }: PostDetailPageProps) {
           <ul className="flex items-center gap-2 mt-4">
             {post.tags.map((tag) => (
               <li key={tag}>
-                <Badge variant="outline">{tag}</Badge>
+                <Badge variant="outline" className="border border-primary">
+                  {tag}
+                </Badge>
               </li>
             ))}
           </ul>
