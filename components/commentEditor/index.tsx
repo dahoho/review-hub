@@ -32,7 +32,7 @@ const CommentEditor = ({ setValue }: CommentEditorPropsType) => {
   });
 
   return (
-    <div className="mt-4 relative border border-gray-300 rounded-lg min-h-[240px] ">
+    <div className="mt-4 relative border border-gray-400 rounded-lg min-h-[240px] ">
       <EditorContent editor={editor} className="w-full h-full pl-4 pt-2" />
     </div>
   );

@@ -36,7 +36,7 @@ export const InlineCommentEditor = ({
 
   return (
     <div className="mt-4">
-      <div className="relative border border-gray-300 rounded-lg min-h-[240px]">
+      <div className="relative border border-gray-400 rounded-lg min-h-[240px]">
         <EditorContent editor={editor} className="w-full h-full pl-4 pt-2" />
       </div>
       <div className="mt-2 flex gap-2">

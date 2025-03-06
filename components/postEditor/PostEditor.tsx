@@ -35,7 +35,7 @@ const PostEditor = ({ setValue }: PostEditorPropsType) => {
   });
 
   return (
-    <div className="mt-4 relative border border-gray-300 rounded-lg min-h-[400px]">
+    <div className="mt-4 relative border border-gray-400 rounded-lg min-h-[400px]">
       <EditorContent editor={editor} className="w-full h-full pl-4 pt-2" />
     </div>
   );

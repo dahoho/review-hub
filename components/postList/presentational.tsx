@@ -20,7 +20,7 @@ export const PostListPresentational = ({
   posts,
 }: PostListPresentationalType) => {
   return posts.length ? (
-    <ul className="flex flex-col gap-4 divide-y divide-gray-200 border-b border-gray-200">
+    <ul className="flex flex-col gap-4 divide-y divide-gray-400 border-b border-gray-400">
       {posts.map((post) => (
         <PostItem key={post.id} post={post} />
       ))}

@@ -16,7 +16,7 @@ export const HeaderPresentational = ({
   isLoading,
 }: HeaderPresentationalPropsType) => {
   return (
-    <header className="h-14 flex items-center justify-between px-5 border-b border-gray-200">
+    <header className="h-14 flex items-center justify-between px-5 border-b border-gray-400">
       <h1 className="md:text-xl font-bold">
         <Link href="/">Review Hub</Link>
       </h1>
