@@ -42,7 +42,10 @@ export const CommentList = ({
       <div className="flex items-center gap-2 justify-between">
         <div className="flex items-center gap-2">
           <Avatar>
-            <AvatarImage src={comment.author.image} alt={comment.author.name} />
+            <AvatarImage
+              src={comment.author.image ?? ""}
+              alt={comment.author.name ?? ""}
+            />
           </Avatar>
           <p className="text-sm">{comment.author.name}</p>
         </div>

@@ -19,53 +19,53 @@ type UserDropdownMenuPropsType = {
 };
 
 export const UserDropdownMenu = ({ user }: UserDropdownMenuPropsType) => {
+  if (!user) return null;
+
   return (
-    user?.image && (
-      <DropdownMenu>
-        <DropdownMenuTrigger>
-          <Avatar className="cursor-pointer">
-            <AvatarImage src={user.image} alt={user.name ?? ""} />
-          </Avatar>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuLabel>{user.name}</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem asChild>
-            <Link
-              href={`/profile/${user.name}`}
-              className="cursor-pointer flex items-center"
-            >
-              <UserIcon />
-              <span>プロフィール</span>
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link
-              href={`/dashboard`}
-              className="cursor-pointer flex items-center"
-            >
-              <NotebookPen />
-              <span>記事の管理</span>
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem className="cursor-pointer">
-            <Link
-              href={`/setting/account`}
-              className="cursor-pointer flex items-center"
-            >
-              <Settings />
-              <span>アカウント設定</span>
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => signOut({ callbackUrl: `/login` })}
-            className="cursor-pointer"
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        <Avatar className="cursor-pointer">
+          <AvatarImage src={user.image ?? ""} alt={user.name ?? ""} />
+        </Avatar>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuLabel>{user.name}</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem asChild>
+          <Link
+            href={`/profile/${user.name}`}
+            className="cursor-pointer flex items-center"
           >
-            <LogOut />
-            <span>ログアウト</span>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    )
+            <UserIcon />
+            <span>プロフィール</span>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link
+            href={`/dashboard`}
+            className="cursor-pointer flex items-center"
+          >
+            <NotebookPen />
+            <span>記事の管理</span>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer">
+          <Link
+            href={`/setting/account`}
+            className="cursor-pointer flex items-center"
+          >
+            <Settings />
+            <span>アカウント設定</span>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => signOut({ callbackUrl: `/login` })}
+          className="cursor-pointer"
+        >
+          <LogOut />
+          <span>ログアウト</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };

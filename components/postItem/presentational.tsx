@@ -30,7 +30,10 @@ export const PostItemPresentational = ({
       <div className="flex items-center gap-2 justify-between">
         <div className="flex items-center gap-2">
           <Avatar>
-            <AvatarImage src={post.author.image} alt={post.author.name} />
+            <AvatarImage
+              src={post.author.image ?? ""}
+              alt={post.author.name ?? ""}
+            />
           </Avatar>
           <p className="text-sm">{post.author.name}</p>
           {isDashboard && (

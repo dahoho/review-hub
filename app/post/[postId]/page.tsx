@@ -33,7 +33,10 @@ export default async function PostDetailPage({ params }: PostDetailPageProps) {
         <div className="px-5 py-12">
           <div className="flex items-center gap-2">
             <Avatar>
-              <AvatarImage src={post.author.image} alt={post.author.name} />
+              <AvatarImage
+                src={post.author.image ?? ""}
+                alt={post.author.name ?? ""}
+              />
             </Avatar>
             <p className="text-xs">{post.author.name}</p>
           </div>
