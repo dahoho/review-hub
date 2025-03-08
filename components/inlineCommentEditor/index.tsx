@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Placeholder from "@tiptap/extension-placeholder";
+import Toolbar from "@/components/Toolbar/Toolbar";
 
 export const InlineCommentEditor = ({
   initialContent,
@@ -37,6 +38,7 @@ export const InlineCommentEditor = ({
   return (
     <div className="mt-4">
       <div className="relative border border-gray-300 rounded-lg min-h-[240px]">
+        <Toolbar editor={editor} />
         <EditorContent editor={editor} className="w-full h-full pl-4 pt-2" />
       </div>
       <div className="mt-2 flex gap-2">

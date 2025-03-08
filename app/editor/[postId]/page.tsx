@@ -12,9 +12,7 @@ export default async function EditorPage({ params }: EditorPagePropsType) {
   return (
     <LayoutContainer>
       <MainLayout>
-        <div className="px-5 mt-14">
-          <EditorOperation postId={postId} />
-        </div>
+        <EditorOperation postId={postId} />
       </MainLayout>
     </LayoutContainer>
   );

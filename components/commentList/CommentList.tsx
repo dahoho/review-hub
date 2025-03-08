@@ -70,7 +70,7 @@ export const CommentList = ({
         />
       ) : (
         <div
-          className="prose mt-6"
+          className="prose prose-sm sm:prose-base lg:prose-lg xl:prose-2xl m-5 focus:outline-none "
           dangerouslySetInnerHTML={{ __html: String(comment.content) }}
         />
       )}

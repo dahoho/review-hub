@@ -1,5 +1,6 @@
 "use client";
 
+import Toolbar from "@/components/Toolbar/Toolbar";
 import Placeholder from "@tiptap/extension-placeholder";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
@@ -33,6 +34,7 @@ const CommentEditor = ({ setValue }: CommentEditorPropsType) => {
 
   return (
     <div className="mt-4 relative border border-gray-300 rounded-lg min-h-[240px] ">
+      <Toolbar editor={editor} />
       <EditorContent editor={editor} className="w-full h-full pl-4 pt-2" />
     </div>
   );
