@@ -10,7 +10,6 @@ import { useCommentEditing } from "@/hooks/useCommentEditing";
 import { useCommentReply } from "@/hooks/useCommentReply";
 
 import dayjs from "dayjs";
-import { MessageCircle } from "lucide-react";
 import { User } from "next-auth";
 
 type CommentListPropsType = {
