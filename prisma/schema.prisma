@@ -106,6 +106,9 @@ model Comment {
   parent    Comment?   @relation("CommentReplies", fields: [parentId], references: [id])
   replies   Comment[]  @relation("CommentReplies")
 
+// onDelete: Cascade で親のコメントが削除されたら子のコメントも削除される
+// fields: [postId] - > postIdに関連する投稿のid
+// references: [id] - > 投稿のidを参照
   post   Post @relation(fields: [postId], references: [id],onDelete: Cascade)
   author User @relation(fields: [authorId], references: [id])
 }
