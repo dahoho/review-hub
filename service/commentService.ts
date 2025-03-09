@@ -5,12 +5,26 @@ export const fetchCommentsByPostId = async (postId: string) => {
   return await db.comment.findMany({
     where: {
       postId,
+      parentId: null, // トップレベルのコメントのみ取得
     },
     include: {
       author: {
         select: {
           name: true,
           image: true,
+        },
+      },
+      replies: {
+        include: {
+          author: {
+            select: {
+              name: true,
+              image: true,
+            },
+          },
+        },
+        orderBy: {
+          createdAt: "asc",
         },
       },
     },

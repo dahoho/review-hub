@@ -92,7 +92,7 @@ export const CommentList = ({
 
       {/* 返信コメントのレンダリング */}
       {replies.length > 0 && (
-        <ul className="ml-8 mt-4">
+        <ul className="ml-8 mt-8 flex flex-col gap-4">
           {replies.map((reply) => (
             <CommentList
               key={reply.id}

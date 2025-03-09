@@ -36,7 +36,7 @@ export const useCommentReply = ({
 
   const handleReply = async (replyContent: string) => {
     try {
-      const res = await fetch(`/api/comments`, {
+      const response = await fetch(`/api/comments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,8 +47,8 @@ export const useCommentReply = ({
           parentId: comment.id, // 返信対象のコメントID
         }),
       });
-      if (res.ok) {
-        const newReply = await res.json();
+      if (response.ok) {
+        const newReply = await response.json();
         // 返信コメントリストに追加
         setReplies((prev) => [...prev, newReply]);
         setIsReplying(false);
