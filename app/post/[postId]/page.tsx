@@ -1,5 +1,6 @@
 import { CommentForm } from "@/components/commentForm";
-import { CommentList } from "@/components/commentList/CommentList";
+import { CommentList } from "@/components/commentList";
+
 import { LayoutContainer } from "@/components/layout/layout/container";
 import { MainLayout } from "@/components/layout/mainLayout";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";

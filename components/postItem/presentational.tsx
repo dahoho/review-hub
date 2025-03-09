@@ -26,7 +26,7 @@ export const PostItemPresentational = ({
   isDashboard,
 }: PostItemPresentationalType) => {
   return (
-    <li key={post.id} className="p-6">
+    <li key={post.id} className="pb-4">
       <div className="flex items-center gap-2 justify-between">
         <div className="flex items-center gap-2">
           <Avatar>

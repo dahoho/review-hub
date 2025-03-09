@@ -4,7 +4,7 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Placeholder from "@tiptap/extension-placeholder";
 import { UseFormSetValue } from "react-hook-form";
-import Toolbar from "@/components/Toolbar/Toolbar";
+
 import { all, createLowlight } from "lowlight";
 const lowlight = createLowlight(all);
 import css from "highlight.js/lib/languages/css";
@@ -14,6 +14,7 @@ import html from "highlight.js/lib/languages/xml";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import Underline from "@tiptap/extension-underline";
 import Link from "@tiptap/extension-link";
+import { Toolbar } from "@/components/Toolbar";
 
 lowlight.register("html", html);
 lowlight.register("css", css);
@@ -29,7 +30,7 @@ type PostEditorPropsType = {
   }>;
 };
 
-const PostEditor = ({ setValue }: PostEditorPropsType) => {
+export const PostEditor = ({ setValue }: PostEditorPropsType) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -162,5 +163,3 @@ const PostEditor = ({ setValue }: PostEditorPropsType) => {
     </div>
   );
 };
-
-export default PostEditor;

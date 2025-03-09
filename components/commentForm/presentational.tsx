@@ -1,6 +1,6 @@
 "use client";
 
-import CommentEditor from "@/components/commentEditor";
+import { CommentEditor } from "@/components/commentEditor";
 import { Button } from "@/components/ui/button";
 import { commentPostSchemaType } from "@/lib/validations/comments";
 import { Loader2 } from "lucide-react";

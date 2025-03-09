@@ -1,6 +1,6 @@
 "use client";
 
-import PostEditor from "@/components/postEditor/PostEditor";
+import { PostEditor } from "@/components/postEditor";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CATEGORY_MENU_ITEMS } from "@/constans";

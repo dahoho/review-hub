@@ -1,5 +1,6 @@
-import { CreatePostButton } from "@/components/createPostButton/CreatePostButton";
-import { UserDropdownMenu } from "@/components/userDropdownMenu/UserDropdownMenu";
+import { CreatePostButton } from "@/components/createPostButton";
+import { UserDropdownMenu } from "@/components/userDropdownMenu";
+
 import { Bell, Search } from "lucide-react";
 import { User } from "next-auth";
 import Link from "next/link";

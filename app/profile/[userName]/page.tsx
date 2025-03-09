@@ -1,7 +1,8 @@
 import { LayoutContainer } from "@/components/layout/layout/container";
 import { MainLayout } from "@/components/layout/mainLayout";
-import { Profile } from "@/components/profile/Profile";
-import { ProfilePost } from "@/components/profilePost/ProfilePost";
+import { Profile } from "@/components/profile";
+import { ProfilePost } from "@/components/profilePost";
+
 import { getCurrentUser } from "@/lib/session";
 import { fetchPosts } from "@/service/postService";
 import { redirect } from "next/navigation";

@@ -22,7 +22,7 @@ type ToolbarPropsType = {
   editor: Editor | null;
 };
 
-const Toolbar = ({ editor }: ToolbarPropsType) => {
+export const Toolbar = ({ editor }: ToolbarPropsType) => {
   const setLink = useCallback(() => {
     if (!editor) return;
     const previousUrl = editor.getAttributes("link").href;
@@ -183,5 +183,3 @@ const Toolbar = ({ editor }: ToolbarPropsType) => {
     </>
   );
 };
-
-export default Toolbar;
