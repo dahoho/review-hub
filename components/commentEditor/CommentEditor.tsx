@@ -1,6 +1,6 @@
 "use client";
 
-import { Toolbar } from "@/components/Toolbar";
+import { Toolbar } from "@/components/toolbar";
 import Placeholder from "@tiptap/extension-placeholder";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";

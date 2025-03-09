@@ -2,6 +2,7 @@
 
 import { CommentOperation } from "@/components/commentOperation";
 import { InlineCommentEditor } from "@/components/inlineCommentEditor";
+import { ReplyButton } from "@/components/replyButton";
 
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { DATE_FORMAT } from "@/constans";
@@ -85,26 +86,16 @@ export const CommentList = ({
 
       {/* 返信ボタン */}
       {!isReplying && (
-        <div className="ml-8">
-          <button
-            className="text-gray-500 text-sm flex items-center gap-2 cursor-pointer"
-            onClick={() => setIsReplying((prev) => !prev)}
-          >
-            <MessageCircle size={18} />
-            返信
-          </button>
-        </div>
+        <ReplyButton handleClickSetReplying={() => setIsReplying(true)} />
       )}
 
       {/* 返信エディタ */}
       {isReplying && (
-        <div className="ml-8 mt-2">
-          <InlineCommentEditor
-            initialContent=""
-            onSave={(replyContent) => handleReply(replyContent)}
-            onCancel={() => setIsReplying(false)}
-          />
-        </div>
+        <InlineCommentEditor
+          initialContent=""
+          onSave={(replyContent) => handleReply(replyContent)}
+          onCancel={() => setIsReplying(false)}
+        />
       )}
 
       {/* 返信コメントのレンダリング */}

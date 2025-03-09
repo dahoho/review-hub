@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Placeholder from "@tiptap/extension-placeholder";
-import { Toolbar } from "@/components/Toolbar";
+import { Toolbar } from "@/components/toolbar";
 
 export const InlineCommentEditor = ({
   initialContent,

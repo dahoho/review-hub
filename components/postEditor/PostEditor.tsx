@@ -14,7 +14,7 @@ import html from "highlight.js/lib/languages/xml";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import Underline from "@tiptap/extension-underline";
 import Link from "@tiptap/extension-link";
-import { Toolbar } from "@/components/Toolbar";
+import { Toolbar } from "@/components/toolbar";
 
 lowlight.register("html", html);
 lowlight.register("css", css);
