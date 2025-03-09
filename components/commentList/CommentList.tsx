@@ -5,8 +5,10 @@ import { InlineCommentEditor } from "@/components/inlineCommentEditor";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { DATE_FORMAT } from "@/constans";
 import { useCommentEditing } from "@/hooks/useCommentEditing";
+import { useCommentReply } from "@/hooks/useCommentReply";
 
 import dayjs from "dayjs";
+import { MessageCircle } from "lucide-react";
 import { User } from "next-auth";
 
 type CommentListPropsType = {
@@ -22,6 +24,7 @@ type CommentListPropsType = {
     content: string;
     postId: string;
     updatedAt: Date;
+    replies?: CommentListPropsType["initialComment"][];
   };
   user?: User;
   post: {
@@ -36,6 +39,10 @@ export const CommentList = ({
 }: CommentListPropsType) => {
   const { isEditing, setIsEditing, comment, handleSaveEdit } =
     useCommentEditing(initialComment);
+  const { isReplying, setIsReplying, replies, handleReply } = useCommentReply({
+    initialComment,
+    comment,
+  });
 
   return (
     <li key={comment.id}>
@@ -73,6 +80,44 @@ export const CommentList = ({
           className="prose prose-sm sm:prose-base lg:prose-lg xl:prose-2xl m-5 focus:outline-none "
           dangerouslySetInnerHTML={{ __html: String(comment.content) }}
         />
+      )}
+
+      {/* 返信ボタン */}
+      {!isReplying && (
+        <div className="ml-8">
+          <button
+            className="text-gray-500 text-sm flex items-center gap-2 cursor-pointer"
+            onClick={() => setIsReplying((prev) => !prev)}
+          >
+            <MessageCircle size={18} />
+            返信
+          </button>
+        </div>
+      )}
+
+      {/* 返信エディタ */}
+      {isReplying && (
+        <div className="ml-8 mt-2">
+          <InlineCommentEditor
+            initialContent=""
+            onSave={(replyContent) => handleReply(replyContent)}
+            onCancel={() => setIsReplying(false)}
+          />
+        </div>
+      )}
+
+      {/* 返信コメントのレンダリング */}
+      {replies.length > 0 && (
+        <ul className="ml-8 mt-4">
+          {replies.map((reply) => (
+            <CommentList
+              key={reply.id}
+              initialComment={reply}
+              user={user}
+              post={post}
+            />
+          ))}
+        </ul>
       )}
     </li>
   );

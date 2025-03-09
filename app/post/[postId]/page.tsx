@@ -76,7 +76,7 @@ export default async function PostDetailPage({ params }: PostDetailPageProps) {
               ))}
             </ul>
           )}
-          <div className="mt-12">
+          <div className="mt-20">
             <CommentForm postId={postId} />
           </div>
         </section>

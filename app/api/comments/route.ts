@@ -6,6 +6,7 @@ import { z } from "zod";
 const commentCreateSchema = z.object({
   postId: z.string(),
   content: z.string(),
+  parentId: z.string().optional(),
 });
 
 export async function POST(req: NextRequest) {
@@ -15,13 +16,14 @@ export async function POST(req: NextRequest) {
 
   try {
     const json = await req.json();
-    const { postId, content } = commentCreateSchema.parse(json);
+    const { postId, content, parentId } = commentCreateSchema.parse(json);
 
     const comment = await db.comment.create({
       data: {
         content,
-        postId,
-        authorId: user.id ?? "",
+        post: { connect: { id: postId } },
+        author: { connect: { id: user.id ?? "" } },
+        ...(parentId ? { parent: { connect: { id: parentId } } } : {}),
       },
       include: {
         author: {
@@ -30,11 +32,13 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // 投稿のコメント数を更新
-    await db.post.update({
-      where: { id: postId },
-      data: { numberOfAnswers: { increment: 1 } },
-    });
+    // 返信以外のコメントの場合のみ、投稿のコメント数を更新
+    if (!parentId) {
+      await db.post.update({
+        where: { id: postId },
+        data: { numberOfAnswers: { increment: 1 } },
+      });
+    }
 
     return NextResponse.json(comment, { status: 201 });
   } catch (error) {

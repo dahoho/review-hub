@@ -17,7 +17,7 @@ const CommentEditor = ({ setValue }: CommentEditorPropsType) => {
     extensions: [
       StarterKit,
       Placeholder.configure({
-        placeholder: "ここにコメントを入力してください",
+        placeholder: "この投稿についてコメントする",
       }),
     ],
     editorProps: {

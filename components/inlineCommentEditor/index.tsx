@@ -20,7 +20,7 @@ export const InlineCommentEditor = ({
     extensions: [
       StarterKit,
       Placeholder.configure({
-        placeholder: "ここにコメントを編集してください",
+        placeholder: "このコメントについて返信する",
       }),
     ],
     content: initialContent,

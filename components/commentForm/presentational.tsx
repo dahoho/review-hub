@@ -22,16 +22,18 @@ export const CommentFormPresentational = ({
   onSubmit,
 }: CommentFormType) => {
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="mt-1">
-        <CommentEditor setValue={setValue} />
-      </div>
-      <div className="flex items-center justify-end gap-4">
-        <Button type="submit" className="px-6 cursor-pointer mt-4">
-          {isSubmitting && <Loader2 className="animate-spin" />}
-          投稿する
-        </Button>
-      </div>
-    </form>
+    <>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="mt-1">
+          <CommentEditor setValue={setValue} />
+        </div>
+        <div className="flex items-center justify-end gap-4">
+          <Button type="submit" className="px-6 cursor-pointer mt-4">
+            {isSubmitting && <Loader2 className="animate-spin" />}
+            投稿する
+          </Button>
+        </div>
+      </form>
+    </>
   );
 };

@@ -24,13 +24,15 @@ export const fetchCommentsByPostId = async (postId: string) => {
 export const createComment = async (
   postId: string,
   authorId: string,
-  content: string
+  content: string,
+  parentId?: string
 ) => {
   return await db.comment.create({
     data: {
       content,
-      postId,
-      authorId,
+      post: { connect: { id: postId } },
+      author: { connect: { id: authorId } },
+      ...(parentId ? { parent: { connect: { id: parentId } } } : {}),
     },
     include: {
       author: {
