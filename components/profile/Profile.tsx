@@ -1,4 +1,4 @@
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Author } from "@/components/author";
 import { User } from "next-auth";
 
 type ProfilePropsType = {
@@ -11,16 +11,15 @@ export const Profile = ({ user }: ProfilePropsType) => {
   return (
     <section>
       <h2 className="text-3xl font-bold">プロフィール</h2>
-      <div className="flex gap-4 mt-14">
-        <Avatar>
-          <AvatarImage src={user.image ?? ""} alt={user.name ?? ""} />
-        </Avatar>
-        <div>
-          <p className="font-bold">{user.name ?? ""}</p>
-          <p className="mt-2 leading-7">
-            フロントエンドエンジニア。React が好きです。
-          </p>
-        </div>
+      <div className="mt-14">
+        <Author
+          author={{ name: user.name ?? "", image: user.image ?? "" }}
+          avatarSize="lg"
+          textSize="lg"
+        />
+        <p className="mt-10 leading-7">
+          フロントエンドエンジニア。React が好きです。
+        </p>
       </div>
     </section>
   );

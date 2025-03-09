@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { Post } from "@prisma/client";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 import { MessageCircle } from "lucide-react";
 import { PostOperation } from "@/components/postOperation";
+import { Author } from "@/components/author";
 
 type PostWithAuthor = Post & {
   author: {
@@ -29,13 +29,7 @@ export const PostItemPresentational = ({
     <li key={post.id} className="pb-4">
       <div className="flex items-center gap-2 justify-between">
         <div className="flex items-center gap-2">
-          <Avatar>
-            <AvatarImage
-              src={post.author.image ?? ""}
-              alt={post.author.name ?? ""}
-            />
-          </Avatar>
-          <p className="text-sm">{post.author.name}</p>
+          <Author author={post.author} />
           {isDashboard && (
             <Badge
               className={`text-xs border bg-transparent ${

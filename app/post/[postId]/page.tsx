@@ -1,10 +1,10 @@
+import { Author } from "@/components/author";
 import { CommentForm } from "@/components/commentForm";
 import { CommentList } from "@/components/commentList";
 
 import { LayoutContainer } from "@/components/layout/layout/container";
 import { MainLayout } from "@/components/layout/mainLayout";
 
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DATE_FORMAT } from "@/constans";
 import { getCurrentUser } from "@/lib/session";
@@ -32,15 +32,7 @@ export default async function PostDetailPage({ params }: PostDetailPageProps) {
   return (
     <LayoutContainer>
       <MainLayout>
-        <div className="flex items-center gap-2">
-          <Avatar>
-            <AvatarImage
-              src={post.author.image ?? ""}
-              alt={post.author.name ?? ""}
-            />
-          </Avatar>
-          <p className="text-xs">{post.author.name}</p>
-        </div>
+        <Author author={post.author} />
         <time
           dateTime={dayjs(post.createdAt).format(DATE_FORMAT)}
           className="text-xs text-gray-500 mt-4 block"

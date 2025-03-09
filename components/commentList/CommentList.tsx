@@ -1,10 +1,10 @@
 "use client";
 
+import { Author } from "@/components/author";
 import { CommentOperation } from "@/components/commentOperation";
 import { InlineCommentEditor } from "@/components/inlineCommentEditor";
 import { ReplyButton } from "@/components/replyButton";
 
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { DATE_FORMAT } from "@/constans";
 import { useCommentEditing } from "@/hooks/useCommentEditing";
 import { useCommentReply } from "@/hooks/useCommentReply";
@@ -48,15 +48,7 @@ export const CommentList = ({
   return (
     <li key={comment.id}>
       <div className="flex items-center gap-2 justify-between">
-        <div className="flex items-center gap-2">
-          <Avatar>
-            <AvatarImage
-              src={comment.author.image ?? ""}
-              alt={comment.author.name ?? ""}
-            />
-          </Avatar>
-          <p className="text-sm">{comment.author.name}</p>
-        </div>
+        <Author author={comment.author} />
         {user?.id === comment.authorId && (
           <CommentOperation
             commentId={comment.id}
