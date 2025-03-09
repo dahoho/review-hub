@@ -33,7 +33,31 @@ export const EditorOperationPresentational = ({
 }: EditorOperationType) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex items-center gap-4">
+      <div>
+        <Input
+          className="bg-transparent font-bold py-2 px-4 !text-2xl h-14"
+          placeholder="タイトルを入力してください"
+          {...register("title")}
+        />
+      </div>
+      <div className="mt-8 flex items-center gap-2">
+        <TagIcon size={20} />
+        <div className="flex gap-4">
+          {CATEGORY_MENU_ITEMS.map((tag) => {
+            if (tag.name === "すべて") return null;
+            return (
+              <label key={tag.name} className="flex items-center gap-1">
+                <input type="checkbox" value={tag.name} {...register("tags")} />
+                <span>{tag.name}</span>
+              </label>
+            );
+          })}
+        </div>
+      </div>
+      <div className="mt-6">
+        <PostEditor setValue={setValue} />
+      </div>
+      <div className="flex items-center gap-6 mt-6">
         <Button
           type="submit"
           className="px-6 cursor-pointer"
@@ -54,30 +78,6 @@ export const EditorOperationPresentational = ({
           )}
           下書き保存
         </Button>
-      </div>
-      <div className="mt-6">
-        <Input
-          className="bg-transparent font-bold py-2 px-4 !text-2xl h-14"
-          placeholder="タイトルを入力してください"
-          {...register("title")}
-        />
-      </div>
-      <div className="mt-6 flex items-center gap-2">
-        <TagIcon size={20} />
-        <div className="flex gap-4">
-          {CATEGORY_MENU_ITEMS.map((tag) => {
-            if (tag.name === "すべて") return null;
-            return (
-              <label key={tag.name} className="flex items-center gap-1">
-                <input type="checkbox" value={tag.name} {...register("tags")} />
-                <span>{tag.name}</span>
-              </label>
-            );
-          })}
-        </div>
-      </div>
-      <div className="mt-6">
-        <PostEditor setValue={setValue} />
       </div>
     </form>
   );
