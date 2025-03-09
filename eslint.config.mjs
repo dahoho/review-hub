@@ -16,6 +16,7 @@ const eslintConfig = [
     plugins: { "unused-imports": unUsedPlugin },
     rules: {
       "unused-imports/no-unused-imports": "error",
+      eqeqeq: "error",
     },
   },
 ];
