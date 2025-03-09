@@ -11,6 +11,7 @@ export type CommentEditingType = {
   createdAt: Date;
   content: string;
   postId: string;
+  parentId?: string;
   updatedAt: Date;
 };
 

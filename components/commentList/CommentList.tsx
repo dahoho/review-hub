@@ -25,6 +25,7 @@ type CommentListPropsType = {
     content: string;
     postId: string;
     updatedAt: Date;
+    parentId?: string;
     replies?: CommentListPropsType["initialComment"][];
   };
   user?: User;
@@ -76,7 +77,7 @@ export const CommentList = ({
       )}
 
       {/* 返信ボタン */}
-      {!isReplying && (
+      {!isReplying && !comment.parentId && (
         <ReplyButton handleClickSetReplying={() => setIsReplying(true)} />
       )}
 
