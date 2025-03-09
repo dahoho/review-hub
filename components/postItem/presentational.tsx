@@ -65,7 +65,7 @@ export const PostItemPresentational = ({
         </ul>
         <p className="text-sm flex items-center gap-1">
           <MessageCircle size={18} />
-          {post.numberOfAnswers}
+          {post.numberOfAnswers}件
         </p>
       </div>
     </li>
