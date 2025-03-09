@@ -1,4 +1,4 @@
-export const FooterPresentational = () => {
+export const Footer = () => {
   return (
     <footer>
       <div className="h-14 flex items-center justify-center border-t border-gray-300">

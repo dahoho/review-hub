@@ -1,5 +1,6 @@
 import { LayoutContainer } from "@/components/layout/layout/container";
 import { MainLayout } from "@/components/layout/mainLayout";
+
 import { Profile } from "@/components/profile";
 import { ProfilePost } from "@/components/profilePost";
 

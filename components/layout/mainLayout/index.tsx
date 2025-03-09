@@ -1,1 +1,1 @@
-export { MainLayoutContainer as MainLayout } from "./container";
+export { MainLayout } from "./MainLayout";

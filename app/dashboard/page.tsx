@@ -1,5 +1,6 @@
 import { LayoutContainer } from "@/components/layout/layout/container";
 import { MainLayout } from "@/components/layout/mainLayout";
+
 import { PostList } from "@/components/postList";
 import { getCurrentUser } from "@/lib/session";
 import { fetchPosts } from "@/service/postService";

@@ -3,6 +3,7 @@ import { CommentList } from "@/components/commentList";
 
 import { LayoutContainer } from "@/components/layout/layout/container";
 import { MainLayout } from "@/components/layout/mainLayout";
+
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DATE_FORMAT } from "@/constans";

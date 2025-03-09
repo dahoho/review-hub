@@ -1,9 +1,9 @@
-import { Footer } from "@/components/layout/footer";
 import { SideBar } from "@/components/layout/sideBar";
 import { Header } from "@/components/layout/header";
 import { ChildrenType } from "@/type/children";
 import { User } from "next-auth";
 import { Toaster } from "@/components/ui/sonner";
+import { Footer } from "@/components/layout/footer";
 
 type HeaderPresentationalPropsType = {
   user?: User;
