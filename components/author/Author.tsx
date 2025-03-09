@@ -16,12 +16,12 @@ export const Author = ({
 }: AuthorPropsType) => {
   const avatarSizeClasses = {
     md: "w-8",
-    lg: "w-18",
+    lg: "w-24",
   };
 
   const textSizeClasses = {
     md: "text-sm",
-    lg: "text-xl",
+    lg: "text-xl font-bold",
   };
 
   return (
