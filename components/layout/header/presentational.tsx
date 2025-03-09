@@ -9,12 +9,14 @@ type HeaderPresentationalPropsType = {
   user?: User;
   createPost: () => void;
   isLoading: boolean;
+  isEditorPage: boolean;
 };
 
 export const HeaderPresentational = ({
   user,
   createPost,
   isLoading,
+  isEditorPage,
 }: HeaderPresentationalPropsType) => {
   return (
     <header className="h-14 flex items-center justify-between px-5 border-b border-gray-300">
@@ -25,7 +27,9 @@ export const HeaderPresentational = ({
         <Search className="md:w-6 w-5 cursor-pointer" />
         <Bell className="md:w-6 w-5 cursor-pointer" />
         <UserDropdownMenu user={user} />
-        <CreatePostButton createPost={createPost} isLoading={isLoading} />
+        {!isEditorPage && (
+          <CreatePostButton createPost={createPost} isLoading={isLoading} />
+        )}
       </div>
     </header>
   );
