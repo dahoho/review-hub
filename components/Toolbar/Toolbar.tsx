@@ -7,6 +7,7 @@ import {
   Heading2Icon,
   Heading3Icon,
   Heading4Icon,
+  ImageIcon,
   Link2Icon,
   Link2OffIcon,
   List,
@@ -55,6 +56,20 @@ export const Toolbar = ({ editor }: ToolbarPropsType) => {
       }
     }
   }, [editor]);
+
+  const addImage = useCallback(() => {
+    const url = window.prompt("画像のURLを入力してください");
+
+    if (!editor) return;
+
+    if (url) {
+      editor.chain().focus().setImage({ src: url }).run();
+    }
+  }, [editor]);
+
+  if (!editor) {
+    return null;
+  }
 
   if (!editor) return null;
 
@@ -182,6 +197,11 @@ export const Toolbar = ({ editor }: ToolbarPropsType) => {
         >
           <BetweenHorizontalStartIcon />
         </button>
+
+        <button onClick={addImage} className="cursor-pointer">
+          <ImageIcon />
+        </button>
+
         <button
           type="button"
           onClick={() => editor.chain().focus().undo().run()}

@@ -5,7 +5,6 @@ import StarterKit from "@tiptap/starter-kit";
 import Placeholder from "@tiptap/extension-placeholder";
 
 import { all, createLowlight } from "lowlight";
-const lowlight = createLowlight(all);
 import css from "highlight.js/lib/languages/css";
 import js from "highlight.js/lib/languages/javascript";
 import ts from "highlight.js/lib/languages/typescript";
@@ -14,6 +13,9 @@ import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import Underline from "@tiptap/extension-underline";
 import Link from "@tiptap/extension-link";
 import { Toolbar } from "@/components/toolbar";
+import Image from "@tiptap/extension-image";
+
+const lowlight = createLowlight(all);
 
 lowlight.register("html", html);
 lowlight.register("css", css);
@@ -35,6 +37,7 @@ export const Editor = ({ setValue }: any) => {
     extensions: [
       StarterKit,
       Underline,
+      Image,
       Placeholder.configure({
         placeholder: "ここに記事を入力してください",
       }),
@@ -146,7 +149,17 @@ export const Editor = ({ setValue }: any) => {
       Wow, that’s amazing. Good work, boy! 👏
       <br />
       — Mom
-    </blockquote>`,
+    </blockquote><pre><code class="language-javascript">for (var i=1; i <= 20; i++)
+{
+  if (i % 15 == 0)
+    console.log("FizzBuzz");
+  else if (i % 3 == 0)
+    console.log("Fizz");
+  else if (i % 5 == 0)
+    console.log("Buzz");
+  else
+    console.log(i);
+}</code></pre>`,
     onUpdate({ editor }) {
       console.log(editor.getHTML());
       const html = editor.getHTML();

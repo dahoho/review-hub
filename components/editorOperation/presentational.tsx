@@ -45,8 +45,16 @@ export const EditorOperationPresentational = ({
           {CATEGORY_MENU_ITEMS.map((tag) => {
             if (tag.name === "すべて") return null;
             return (
-              <label key={tag.name} className="flex items-center gap-1">
-                <input type="checkbox" value={tag.name} {...register("tags")} />
+              <label
+                key={tag.name}
+                className="flex items-center gap-1 cursor-pointer"
+              >
+                <input
+                  className="cursor-pointer"
+                  type="checkbox"
+                  value={tag.name}
+                  {...register("tags")}
+                />
                 <span>{tag.name}</span>
               </label>
             );
