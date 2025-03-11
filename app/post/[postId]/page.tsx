@@ -29,8 +29,6 @@ export default async function PostDetailPage({ params }: PostDetailPageProps) {
 
   const comments = await fetchCommentsByPostId(postId);
 
-  console.log("⭐️", post.content);
-
   return (
     <LayoutContainer>
       <MainLayout>
