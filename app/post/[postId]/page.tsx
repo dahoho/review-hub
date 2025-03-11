@@ -56,10 +56,10 @@ export default async function PostDetailPage({ params }: PostDetailPageProps) {
           }}
         />
         {/* コメント一覧 */}
-        <section className="mt-12">
+        <section className="mt-28">
           <h3 className="text-2xl font-bold mb-4">コメント</h3>
           {comments.length === 0 ? (
-            <p>コメントはまだありません。</p>
+            <p className="mt-14">コメントはまだありません。</p>
           ) : (
             <ul className="mt-12 flex flex-col gap-12">
               {comments.map((comment) => (
