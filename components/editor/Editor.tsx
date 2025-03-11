@@ -3,7 +3,6 @@
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Placeholder from "@tiptap/extension-placeholder";
-import { UseFormSetValue } from "react-hook-form";
 
 import { all, createLowlight } from "lowlight";
 const lowlight = createLowlight(all);
@@ -21,16 +20,17 @@ lowlight.register("css", css);
 lowlight.register("js", js);
 lowlight.register("ts", ts);
 
-type PostEditorPropsType = {
-  setValue: UseFormSetValue<{
-    title: string;
-    content?: string;
-    published?: boolean;
-    tags: string[];
-  }>;
-};
+// type PostEditorPropsType = {
+//   setValue: UseFormSetValue<{
+//     title: string;
+//     content?: string;
+//     published?: boolean;
+//     tags: string[];
+//   }>;
+// };
 
-export const PostEditor = ({ setValue }: PostEditorPropsType) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const Editor = ({ setValue }: any) => {
   const editor = useEditor({
     extensions: [
       StarterKit,

@@ -1,6 +1,6 @@
 "use client";
 
-import { CommentEditor } from "@/components/commentEditor";
+import { Editor } from "@/components/editor/Editor";
 import { Button } from "@/components/ui/button";
 import { commentPostSchemaType } from "@/lib/validations/comments";
 import { Loader2 } from "lucide-react";
@@ -25,7 +25,7 @@ export const CommentFormPresentational = ({
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mt-1">
-          <CommentEditor setValue={setValue} />
+          <Editor setValue={setValue} />
         </div>
         <div className="flex items-center justify-end gap-4">
           <Button type="submit" className="px-6 cursor-pointer mt-4">

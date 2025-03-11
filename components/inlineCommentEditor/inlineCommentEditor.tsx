@@ -14,7 +14,7 @@ export const InlineCommentEditor = ({
   onSave: (newContent: string) => void;
   onCancel: () => void;
 }) => {
-  const [content, setContent] = useState<string>(initialContent);
+  const [content, setContent] = useState(initialContent);
 
   const editor = useEditor({
     extensions: [
@@ -42,8 +42,10 @@ export const InlineCommentEditor = ({
         <EditorContent editor={editor} className="w-full h-full pl-4 pt-2" />
       </div>
       <div className="mt-2 flex gap-2">
-        <Button onClick={() => onSave(content)}>保存</Button>
-        <Button variant="outline" onClick={onCancel}>
+        <Button onClick={() => onSave(content)} className="cursor-pointer">
+          保存
+        </Button>
+        <Button variant="outline" onClick={onCancel} className="cursor-pointer">
           キャンセル
         </Button>
       </div>

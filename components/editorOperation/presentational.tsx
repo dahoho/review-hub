@@ -1,6 +1,6 @@
 "use client";
 
-import { PostEditor } from "@/components/postEditor";
+import { Editor } from "@/components/editor/Editor";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CATEGORY_MENU_ITEMS } from "@/constans";
@@ -55,7 +55,7 @@ export const EditorOperationPresentational = ({
         </div>
       </div>
       <div className="mt-6">
-        <PostEditor setValue={setValue} />
+        <Editor setValue={setValue} />
       </div>
       <div className="flex items-center gap-6 mt-6">
         <Button
