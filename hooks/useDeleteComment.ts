@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export const useDeleteComment = () => {
-  const [isDeleteLoading, setIsDeleteLoading] = useState(false);
+  const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
   const [showDialog, setShowDialog] = useState<boolean>(false);
   const router = useRouter();
 

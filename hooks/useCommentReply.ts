@@ -31,7 +31,7 @@ export const useCommentReply = ({
   initialComment,
   comment,
 }: CommentReplyType) => {
-  const [isReplying, setIsReplying] = useState(false);
+  const [isReplying, setIsReplying] = useState<boolean>(false);
   const [replies, setReplies] = useState(initialComment.replies || []);
 
   const handleReply = async (replyContent: string) => {

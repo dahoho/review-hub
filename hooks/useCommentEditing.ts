@@ -16,7 +16,7 @@ export type CommentEditingType = {
 };
 
 export const useCommentEditing = (initialComment: CommentEditingType) => {
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
   const [comment, setComment] = useState<CommentEditingType>(initialComment);
 
   const handleSaveEdit = async (newContent: string) => {

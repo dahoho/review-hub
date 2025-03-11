@@ -14,7 +14,7 @@ export const InlineCommentEditor = ({
   onSave: (newContent: string) => void;
   onCancel: () => void;
 }) => {
-  const [content, setContent] = useState(initialContent);
+  const [content, setContent] = useState<string>(initialContent);
 
   const editor = useEditor({
     extensions: [

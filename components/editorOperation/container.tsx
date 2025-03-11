@@ -18,7 +18,7 @@ export const EditorOperationContainer = ({
 }: EditorOperationContainerType) => {
   const router = useRouter();
   const [operation, setOperation] = useState<"publish" | "draft" | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   const {
     register,
