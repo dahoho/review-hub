@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CATEGORY_MENU_ITEMS } from "@/constans";
 import { postPatchSchemaType } from "@/lib/validations/post";
-import { Loader2, TagIcon } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import {
   UseFormRegister,
   UseFormHandleSubmit,
@@ -41,8 +41,7 @@ export const EditorOperationPresentational = ({
         />
       </div>
       <div className="mt-8 flex items-center gap-2">
-        <TagIcon size={20} />
-        <div className="flex gap-4">
+        <div className="flex flex-wrap md:gap-4 gap-2">
           {CATEGORY_MENU_ITEMS.map((tag) => {
             if (tag.name === "すべて") return null;
             return (

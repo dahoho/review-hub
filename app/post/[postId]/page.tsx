@@ -29,6 +29,8 @@ export default async function PostDetailPage({ params }: PostDetailPageProps) {
 
   const comments = await fetchCommentsByPostId(postId);
 
+  console.log("⭐️", post.content);
+
   return (
     <LayoutContainer>
       <MainLayout>
@@ -51,7 +53,9 @@ export default async function PostDetailPage({ params }: PostDetailPageProps) {
         </ul>
         <div
           className="prose prose-sm sm:prose-base lg:prose-lg xl:prose-2xl m-5 focus:outline-none"
-          dangerouslySetInnerHTML={{ __html: String(post.content) }}
+          dangerouslySetInnerHTML={{
+            __html: String(post.content ? post.content : ""),
+          }}
         />
         {/* コメント一覧 */}
         <section className="mt-12">
