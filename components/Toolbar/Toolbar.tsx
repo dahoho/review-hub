@@ -1,4 +1,5 @@
-import { Editor } from "@tiptap/react";
+import { Editor, FloatingMenu } from "@tiptap/react";
+
 import {
   BetweenHorizontalStartIcon,
   BoldIcon,
@@ -25,22 +26,20 @@ type ToolbarPropsType = {
 export const Toolbar = ({ editor }: ToolbarPropsType) => {
   const setLink = useCallback(() => {
     if (!editor) return;
+
     const previousUrl = editor.getAttributes("link").href;
     const url = window.prompt("URL", previousUrl);
 
-    // cancelled
     if (url === null) {
       return;
     }
 
-    // empty
     if (url === "") {
       editor.chain().focus().extendMarkRange("link").unsetLink().run();
 
       return;
     }
 
-    // update link
     try {
       editor
         .chain()
@@ -67,9 +66,9 @@ export const Toolbar = ({ editor }: ToolbarPropsType) => {
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 2 }).run()
           }
-          className={
+          className={`${
             !editor.isActive("heading", { level: 2 }) ? "opacity-20" : ""
-          }
+          } cursor-pointer`}
         >
           <Heading2Icon />
         </button>
@@ -78,9 +77,9 @@ export const Toolbar = ({ editor }: ToolbarPropsType) => {
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 3 }).run()
           }
-          className={
+          className={`${
             !editor.isActive("heading", { level: 3 }) ? "opacity-20" : ""
-          }
+          } cursor-pointer`}
         >
           <Heading3Icon />
         </button>
@@ -89,37 +88,45 @@ export const Toolbar = ({ editor }: ToolbarPropsType) => {
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 4 }).run()
           }
-          className={
+          className={`${
             !editor.isActive("heading", { level: 4 }) ? "opacity-20" : ""
-          }
+          } cursor-pointer`}
         >
           <Heading4Icon />
         </button>
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleBulletList().run()}
-          className={!editor.isActive("bulletList") ? "opacity-20" : ""}
+          className={`${
+            !editor.isActive("bulletList") ? "opacity-20" : ""
+          } cursor-pointer`}
         >
           <List />
         </button>
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
-          className={!editor.isActive("orderedList") ? "opacity-20" : ""}
+          className={`${
+            !editor.isActive("orderedList") ? "opacity-20" : ""
+          } cursor-pointer`}
         >
           <ListOrderedIcon />
         </button>
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleBold().run()}
-          className={!editor.isActive("bold") ? "opacity-20" : ""}
+          className={`${
+            !editor.isActive("bold") ? "opacity-20" : ""
+          } cursor-pointer`}
         >
           <BoldIcon />
         </button>
         <button
           type="button"
           onClick={setLink}
-          className={editor.isActive("link") ? "is-active" : ""}
+          className={`${
+            editor.isActive("link") ? "is-active" : ""
+          } cursor-pointer`}
         >
           <Link2Icon />
         </button>
@@ -127,34 +134,43 @@ export const Toolbar = ({ editor }: ToolbarPropsType) => {
           type="button"
           onClick={() => editor.chain().focus().unsetLink().run()}
           disabled={!editor.isActive("link")}
+          className="cursor-pointer"
         >
           <Link2OffIcon />
         </button>
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleUnderline().run()}
-          className={editor.isActive("underline") ? "is-active" : ""}
+          className={`${
+            editor.isActive("underline") ? "is-active" : ""
+          } cursor-pointer`}
         >
           <UnderlineIcon />
         </button>
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleStrike().run()}
-          className={!editor.isActive("strike") ? "opacity-20" : ""}
+          className={`${
+            !editor.isActive("strike") ? "opacity-20" : ""
+          } cursor-pointer`}
         >
           <StrikethroughIcon />
         </button>
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-          className={!editor.isActive("codeBlock") ? "opacity-20" : ""}
+          className={`${
+            !editor.isActive("codeBlock") ? "opacity-20" : ""
+          } cursor-pointer`}
         >
           <Code2Icon />
         </button>
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
-          className={!editor.isActive("blockquote") ? "opacity-20" : ""}
+          className={`${
+            !editor.isActive("blockquote") ? "opacity-20" : ""
+          } cursor-pointer`}
         >
           <QuoteIcon />
         </button>
@@ -162,6 +178,7 @@ export const Toolbar = ({ editor }: ToolbarPropsType) => {
         <button
           type="button"
           onClick={() => editor.chain().focus().setHorizontalRule().run()}
+          className="cursor-pointer"
         >
           <BetweenHorizontalStartIcon />
         </button>
@@ -169,6 +186,7 @@ export const Toolbar = ({ editor }: ToolbarPropsType) => {
           type="button"
           onClick={() => editor.chain().focus().undo().run()}
           disabled={!editor.can().undo()}
+          className="cursor-pointer"
         >
           <Undo2Icon />
         </button>
@@ -176,9 +194,103 @@ export const Toolbar = ({ editor }: ToolbarPropsType) => {
           type="button"
           onClick={() => editor.chain().focus().redo().run()}
           disabled={!editor.can().redo()}
+          className="cursor-pointer"
         >
           <Redo2Icon />
         </button>
+        {editor && (
+          <FloatingMenu editor={editor} tippyOptions={{ duration: 100 }}>
+            <div data-testid="floating-menu" className="floating-menu">
+              <button
+                type="button"
+                onClick={() =>
+                  editor.chain().focus().toggleHeading({ level: 2 }).run()
+                }
+                className={`${
+                  editor.isActive("heading", { level: 2 }) ? "is-active" : ""
+                } cursor-pointer`}
+              >
+                <Heading2Icon />
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  editor.chain().focus().toggleHeading({ level: 3 }).run()
+                }
+                className={`${
+                  editor.isActive("heading", { level: 3 }) ? "is-active" : ""
+                } cursor-pointer`}
+              >
+                <Heading3Icon />
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  editor.chain().focus().toggleHeading({ level: 4 }).run()
+                }
+                className={`${
+                  editor.isActive("heading", { level: 4 }) ? "is-active" : ""
+                } cursor-pointer`}
+              >
+                <Heading4Icon />
+              </button>
+              <button
+                type="button"
+                onClick={() => editor.chain().focus().toggleBold().run()}
+                className={`${
+                  editor.isActive("bold") ? "is-active" : ""
+                } cursor-pointer`}
+              >
+                <BoldIcon />
+              </button>
+              <button
+                type="button"
+                onClick={() => editor.chain().focus().toggleBulletList().run()}
+                className={`${
+                  editor.isActive("bulletList") ? "is-active" : ""
+                } cursor-pointer`}
+              >
+                <List />
+              </button>
+              <button
+                type="button"
+                onClick={() => editor.chain().focus().toggleOrderedList().run()}
+                className={`${
+                  editor.isActive("orderedList") ? "is-active" : ""
+                } cursor-pointer`}
+              >
+                <ListOrderedIcon />
+              </button>
+
+              <button
+                type="button"
+                onClick={setLink}
+                className={`${
+                  editor.isActive("link") ? "is-active" : ""
+                } cursor-pointer`}
+              >
+                <Link2Icon />
+              </button>
+              <button
+                type="button"
+                onClick={() => editor.chain().focus().unsetLink().run()}
+                disabled={editor.isActive("link")}
+                className="cursor-pointer"
+              >
+                <Link2OffIcon />
+              </button>
+              <button
+                type="button"
+                onClick={() => editor.chain().focus().toggleUnderline().run()}
+                className={`${
+                  editor.isActive("underline") ? "is-active" : ""
+                } cursor-pointer`}
+              >
+                <UnderlineIcon />
+              </button>
+            </div>
+          </FloatingMenu>
+        )}
       </div>
     </>
   );
