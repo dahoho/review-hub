@@ -60,7 +60,7 @@ export const Toolbar = ({ editor }: ToolbarPropsType) => {
 
   return (
     <>
-      <div className="border-b border-gray-300 flex items-center py-2 px-5 gap-4">
+      <div className="border-b border-gray-300 flex items-center py-2 px-5 gap-4 overflow-scroll">
         <button
           type="button"
           onClick={() =>
@@ -199,7 +199,11 @@ export const Toolbar = ({ editor }: ToolbarPropsType) => {
           <Redo2Icon />
         </button>
         {editor && (
-          <FloatingMenu editor={editor} tippyOptions={{ duration: 100 }}>
+          <FloatingMenu
+            editor={editor}
+            tippyOptions={{ duration: 100 }}
+            className="md:block hidden"
+          >
             <div data-testid="floating-menu" className="floating-menu">
               <button
                 type="button"
