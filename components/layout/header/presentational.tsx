@@ -1,7 +1,7 @@
 import { CreatePostButton } from "@/components/createPostButton";
 import { UserDropdownMenu } from "@/components/userDropdownMenu";
 
-import { Bell, Search } from "lucide-react";
+import { Bell, Code2Icon, Search } from "lucide-react";
 import { User } from "next-auth";
 import Link from "next/link";
 
@@ -21,7 +21,10 @@ export const HeaderPresentational = ({
   return (
     <header className="h-14 flex items-center justify-between px-5 border-b border-gray-300">
       <h1 className="md:text-xl font-bold">
-        <Link href="/">Review Hub</Link>
+        <Link href="/" className="flex items-center gap-2">
+          <Code2Icon />
+          Review Hub
+        </Link>
       </h1>
       <div className="flex items-center gap-4">
         <Search className="md:w-6 w-5 cursor-pointer" />
