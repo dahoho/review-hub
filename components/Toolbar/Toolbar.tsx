@@ -75,7 +75,7 @@ export const Toolbar = ({ editor }: ToolbarPropsType) => {
 
   return (
     <>
-      <div className="border-b border-gray-300 flex items-center py-2 px-5 gap-4 overflow-scroll">
+      <div className="border-b border-gray-300 flex items-center py-2 px-5 gap-4 overflow-auto">
         <button
           type="button"
           onClick={() =>
