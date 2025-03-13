@@ -83,6 +83,7 @@ model Post {
   id              String   @id @default(cuid())
   title           String
   content         String?
+  pullRequestUrl  String?
   numberOfAnswers Int      @default(0)
   tags            String[]
   published       Boolean  @default(false)

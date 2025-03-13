@@ -25,6 +25,7 @@ export const PostItemPresentational = ({
   post,
   isDashboard,
 }: PostItemPresentationalType) => {
+  console.log("🔥", post);
   return (
     <li key={post.id} className="pb-4">
       <div className="flex items-center gap-2 justify-between">
@@ -44,9 +45,24 @@ export const PostItemPresentational = ({
         </div>
         {isDashboard && <PostOperation postId={post.id} />}
       </div>
-      <Link className="block" href={`/post/${post.id}`}>
-        <p className="text-xl font-bold hover:underline mt-4">{post.title}</p>
-      </Link>
+      {post.pullRequestUrl ? (
+        <p className="text-xl font-bold mt-4 flex items-center">
+          <span>プルリクエストURL：</span>
+          <a
+            href={post.pullRequestUrl}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="hover:underline"
+          >
+            {post.pullRequestUrl}
+          </a>
+        </p>
+      ) : (
+        <Link className="block" href={`/post/${post.id}`}>
+          <p className="text-xl font-bold hover:underline mt-4">{post.title}</p>
+        </Link>
+      )}
+
       <div className="flex gap-2 mt-4 items-center justify-between">
         <ul className="flex items-center gap-2">
           {post.tags.map((tag) => (

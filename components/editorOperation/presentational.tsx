@@ -20,6 +20,7 @@ type EditorOperationType = {
   setValue: UseFormSetValue<postPatchSchemaType>;
   onSubmit: (data: postPatchSchemaType) => Promise<string | number | undefined>;
   operation: "publish" | "draft" | null;
+  pullRequestValue: string;
 };
 
 export const EditorOperationPresentational = ({
@@ -30,21 +31,16 @@ export const EditorOperationPresentational = ({
   setValue,
   onSubmit,
   operation,
+  pullRequestValue,
 }: EditorOperationType) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <Input
-          className="bg-transparent font-bold py-2 px-4 !text-2xl h-14"
-          placeholder="タイトルを入力してください"
-          {...register("title")}
-        />
-      </div>
-      <section className="mt-12">
+      <section>
         <h2 className="text-lg font-bold">プルリクエストURL</h2>
         <Input
           className="bg-transparent font-bold py-2 px-4 h-10 mt-2"
           placeholder="GitHubのプルリクエストURLを入力してください"
+          {...register("pullRequestUrl")}
         />
       </section>
       <section className="mt-12">
@@ -72,13 +68,23 @@ export const EditorOperationPresentational = ({
         </div>
       </section>
 
-      <section className="mt-12">
-        <p className="text-lg font-bold">レビュー依頼内容</p>
-        <span className="mt-4 text-sm font-normal text-gray-500 block">
-          ※プルリクエストではなく、直接レビュー依頼をしたい場合は【レビュー依頼内容】を入力してください。
-        </span>
-        <Editor setValue={setValue} />
-      </section>
+      {!pullRequestValue && (
+        <section className="mt-12">
+          <p className="text-lg font-bold">レビュー依頼内容</p>
+          <p className="mt-4 text-sm font-normal text-gray-500 block">
+            ※プルリクエストではなく、直接レビュー依頼をしたい場合は【レビュー依頼内容】を入力してください。
+          </p>
+          <div className="mt-8">
+            <Input
+              className="bg-transparent font-bold py-2 px-4 !text-2xl h-14"
+              placeholder="タイトルを入力してください"
+              {...register("title")}
+            />
+          </div>
+          <Editor setValue={setValue} />
+        </section>
+      )}
+
       <div className="flex items-center gap-6 mt-6">
         <Button
           type="submit"

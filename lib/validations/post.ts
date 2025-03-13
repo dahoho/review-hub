@@ -8,6 +8,7 @@ export const postPatchSchema = z.object({
   content: z.string().optional(),
   published: z.boolean().optional(),
   tags: z.array(z.string()).default([]),
+  pullRequestUrl: z.string().optional(),
 });
 
 export type postPatchSchemaType = z.infer<typeof postPatchSchema>;

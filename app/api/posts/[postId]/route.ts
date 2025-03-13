@@ -34,6 +34,7 @@ export async function PATCH(
         content: body.content,
         published: body.published,
         tags: body.tags,
+        pullRequestUrl: body.pullRequestUrl,
       },
     });
 

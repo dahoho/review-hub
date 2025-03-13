@@ -16,6 +16,7 @@ export const fetchPosts = async (authorId?: string) => {
       numberOfAnswers: true,
       published: true,
       authorId: true,
+      pullRequestUrl: true,
       author: {
         select: {
           id: true,

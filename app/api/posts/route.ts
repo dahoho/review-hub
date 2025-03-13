@@ -6,6 +6,7 @@ import * as z from "zod";
 const postCreateSchema = z.object({
   title: z.string(),
   content: z.string().optional(),
+  pullRequestUrl: z.string().optional(),
 });
 
 export async function POST(req: NextRequest) {
@@ -20,12 +21,13 @@ export async function POST(req: NextRequest) {
     // リクエストボディからJSONを取得
     const json = await req.json();
     const body = postCreateSchema.parse(json);
-    const { title, content } = body;
+    const { title, content, pullRequestUrl } = body;
 
     const post = await db.post.create({
       data: {
         title,
         content,
+        pullRequestUrl,
         authorId: user?.id || "",
       },
       select: {

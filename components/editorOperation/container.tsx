@@ -19,13 +19,16 @@ export const EditorOperationContainer = ({
   const router = useRouter();
   const [operation, setOperation] = useState<"publish" | "draft" | null>(null);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [isPostUpdated, setIsPostUpdated] = useState<boolean>(false);
+  // 初回のアンマウント（Strict Mode のシミュレーション）を防ぐための ref
   const initialUnmountRef = useRef<boolean>(true);
+  // 投稿が正常に更新されたかどうかを追跡する ref
+  const postUpdatedRef = useRef<boolean>(false);
 
   const {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors },
   } = useForm<postPatchSchemaType>({
     resolver: zodResolver(postPatchSchema),
@@ -35,9 +38,12 @@ export const EditorOperationContainer = ({
   });
   console.log("errors", errors);
 
+  const pullRequestValue = watch("pullRequestUrl");
+
   const onSubmit = async (data: postPatchSchemaType) => {
     setIsSubmitting(true);
 
+    console.log("data", data.pullRequestUrl);
     const response = await fetch(`/api/posts/${postId}`, {
       method: "PATCH",
       headers: {
@@ -48,6 +54,7 @@ export const EditorOperationContainer = ({
         content: data.content,
         published: operation === "publish",
         tags: data.tags,
+        pullRequestUrl: data.pullRequestUrl,
       }),
     });
 
@@ -59,29 +66,31 @@ export const EditorOperationContainer = ({
       });
     }
 
+    postUpdatedRef.current = true;
     router.refresh();
-    setIsPostUpdated(true);
     toast.success("success", {
       description: "正常に保存されました",
     });
   };
 
-  // 投稿が更新されずにページを離れたときは、空のレコードを削除する
+  // クリーンアップ関数で、更新されていない場合のみ DELETE を実行
   useEffect(() => {
     return () => {
-      // 初回のアンマウント（Strict Mode によるシミュレーション）の場合はスキップする
+      // 初回のアンマウント（Strict Mode シミュレーション）では処理をスキップ
       if (initialUnmountRef.current) {
         initialUnmountRef.current = false;
         return;
       }
 
-      if (!isPostUpdated) {
+      // 更新されていない場合のみレコード削除を実行
+      if (!postUpdatedRef.current) {
+        console.log("⭐️ 投稿が更新されていないため、レコード削除を実行");
         fetch(`/api/posts/${postId}`, {
           method: "DELETE",
         }).catch((error) => console.error("削除エラー:", error));
       }
     };
-  }, [isPostUpdated]);
+  }, [postId]);
 
   return (
     <EditorOperationPresentational
@@ -92,6 +101,7 @@ export const EditorOperationContainer = ({
       onSubmit={onSubmit}
       setValue={setValue}
       operation={operation}
+      pullRequestValue={pullRequestValue}
     />
   );
 };
