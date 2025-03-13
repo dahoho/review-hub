@@ -40,30 +40,46 @@ export const EditorOperationPresentational = ({
           {...register("title")}
         />
       </div>
-      <div className="mt-8 flex items-center gap-2">
-        <div className="flex flex-wrap md:gap-4 gap-2">
-          {CATEGORY_MENU_ITEMS.map((tag) => {
-            if (tag.name === "すべて") return null;
-            return (
-              <label
-                key={tag.name}
-                className="flex items-center gap-1 cursor-pointer"
-              >
-                <input
-                  className="cursor-pointer"
-                  type="checkbox"
-                  value={tag.name}
-                  {...register("tags")}
-                />
-                <span>{tag.name}</span>
-              </label>
-            );
-          })}
+      <section className="mt-12">
+        <h2 className="text-lg font-bold">プルリクエストURL</h2>
+        <Input
+          className="bg-transparent font-bold py-2 px-4 h-10 mt-2"
+          placeholder="GitHubのプルリクエストURLを入力してください"
+          {...register("title")}
+        />
+      </section>
+      <section className="mt-12">
+        <h2 className="text-lg font-bold">タグ</h2>
+        <div className="flex items-center gap-2">
+          <div className="flex flex-wrap md:gap-4 gap-2 mt-4">
+            {CATEGORY_MENU_ITEMS.map((tag) => {
+              if (tag.name === "すべて") return null;
+              return (
+                <label
+                  key={tag.name}
+                  className="flex items-center gap-1 cursor-pointer"
+                >
+                  <input
+                    className="cursor-pointer"
+                    type="checkbox"
+                    value={tag.name}
+                    {...register("tags")}
+                  />
+                  <span>{tag.name}</span>
+                </label>
+              );
+            })}
+          </div>
         </div>
-      </div>
-      <div className="mt-6">
+      </section>
+
+      <section className="mt-12">
+        <p className="text-lg font-bold">レビュー依頼内容</p>
+        <span className="mt-4 text-sm font-normal text-gray-500 block">
+          ※プルリクエストではなく、直接レビュー依頼をしたい場合は【レビュー依頼内容】を入力してください。
+        </span>
         <Editor setValue={setValue} />
-      </div>
+      </section>
       <div className="flex items-center gap-6 mt-6">
         <Button
           type="submit"
