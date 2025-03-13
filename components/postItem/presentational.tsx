@@ -25,7 +25,6 @@ export const PostItemPresentational = ({
   post,
   isDashboard,
 }: PostItemPresentationalType) => {
-  console.log("🔥", post);
   return (
     <li key={post.id} className="pb-4">
       <div className="flex items-center gap-2 justify-between">
