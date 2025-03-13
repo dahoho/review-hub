@@ -45,7 +45,6 @@ export const EditorOperationPresentational = ({
         <Input
           className="bg-transparent font-bold py-2 px-4 h-10 mt-2"
           placeholder="GitHubのプルリクエストURLを入力してください"
-          {...register("title")}
         />
       </section>
       <section className="mt-12">

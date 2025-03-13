@@ -19,7 +19,12 @@ export const LoginButtonPresentational = ({
   icon,
 }: LoginButtonPresentationalPropsType) => {
   return (
-    <Button variant="outline" onClick={onClick} disabled={isLoading}>
+    <Button
+      variant="outline"
+      onClick={onClick}
+      disabled={isLoading}
+      className="cursor-pointer"
+    >
       {isLoading ? <Loader2 className="animate-spin" /> : icon}
       {text}
     </Button>
