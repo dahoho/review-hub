@@ -52,10 +52,10 @@ export const EditorOperationPresentational = ({
               return (
                 <label
                   key={tag.name}
-                  className="flex items-center gap-1 cursor-pointer"
+                  className="flex items-center gap-1 cursor-pointer text-lg"
                 >
                   <input
-                    className="cursor-pointer"
+                    className="cursor-pointer w-5 h-5"
                     type="checkbox"
                     value={tag.name}
                     {...register("tags")}
