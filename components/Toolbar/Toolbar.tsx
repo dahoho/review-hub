@@ -1,4 +1,4 @@
-import { Editor, FloatingMenu } from "@tiptap/react";
+import { Editor } from "@tiptap/react";
 
 import {
   BetweenHorizontalStartIcon,
@@ -207,103 +207,6 @@ export const Toolbar = ({ editor }: ToolbarPropsType) => {
       >
         <Redo2Icon />
       </button>
-      {editor && (
-        <FloatingMenu
-          editor={editor}
-          tippyOptions={{ duration: 100 }}
-          className="md:block hidden"
-        >
-          <div data-testid="floating-menu" className="floating-menu">
-            <button
-              type="button"
-              onClick={() =>
-                editor.chain().focus().toggleHeading({ level: 2 }).run()
-              }
-              className={`${
-                editor.isActive("heading", { level: 2 }) ? "is-active" : ""
-              } cursor-pointer`}
-            >
-              <Heading2Icon />
-            </button>
-            <button
-              type="button"
-              onClick={() =>
-                editor.chain().focus().toggleHeading({ level: 3 }).run()
-              }
-              className={`${
-                editor.isActive("heading", { level: 3 }) ? "is-active" : ""
-              } cursor-pointer`}
-            >
-              <Heading3Icon />
-            </button>
-            <button
-              type="button"
-              onClick={() =>
-                editor.chain().focus().toggleHeading({ level: 4 }).run()
-              }
-              className={`${
-                editor.isActive("heading", { level: 4 }) ? "is-active" : ""
-              } cursor-pointer`}
-            >
-              <Heading4Icon />
-            </button>
-            <button
-              type="button"
-              onClick={() => editor.chain().focus().toggleBold().run()}
-              className={`${
-                editor.isActive("bold") ? "is-active" : ""
-              } cursor-pointer`}
-            >
-              <BoldIcon />
-            </button>
-            <button
-              type="button"
-              onClick={() => editor.chain().focus().toggleBulletList().run()}
-              className={`${
-                editor.isActive("bulletList") ? "is-active" : ""
-              } cursor-pointer`}
-            >
-              <List />
-            </button>
-            <button
-              type="button"
-              onClick={() => editor.chain().focus().toggleOrderedList().run()}
-              className={`${
-                editor.isActive("orderedList") ? "is-active" : ""
-              } cursor-pointer`}
-            >
-              <ListOrderedIcon />
-            </button>
-
-            <button
-              type="button"
-              onClick={setLink}
-              className={`${
-                editor.isActive("link") ? "is-active" : ""
-              } cursor-pointer`}
-            >
-              <Link2Icon />
-            </button>
-            <button
-              type="button"
-              onClick={() => editor.chain().focus().unsetLink().run()}
-              disabled={editor.isActive("link")}
-              className="cursor-pointer"
-            >
-              <Link2OffIcon />
-            </button>
-            <button
-              type="button"
-              onClick={() => editor.chain().focus().toggleUnderline().run()}
-              className={`${
-                editor.isActive("underline") ? "is-active" : ""
-              } cursor-pointer`}
-            >
-              <UnderlineIcon />
-            </button>
-          </div>
-        </FloatingMenu>
-      )}
     </div>
   );
 };

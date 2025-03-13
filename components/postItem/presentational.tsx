@@ -4,9 +4,9 @@ import Link from "next/link";
 import { Post } from "@prisma/client";
 import { Badge } from "@/components/ui/badge";
 
-import { MessageCircle } from "lucide-react";
 import { PostOperation } from "@/components/postOperation";
 import { Author } from "@/components/author";
+import { MessageCircle } from "lucide-react";
 
 type PostWithAuthor = Post & {
   author: {
@@ -46,8 +46,7 @@ export const PostItemPresentational = ({
         {isDashboard && <PostOperation postId={post.id} />}
       </div>
       {post.pullRequestUrl ? (
-        <p className="text-xl font-bold mt-4 flex items-center">
-          <span>プルリクエストURL：</span>
+        <p className="text-xl font-bold mt-4 flex items-center gap-2">
           <a
             href={post.pullRequestUrl}
             target="_blank"
@@ -63,7 +62,7 @@ export const PostItemPresentational = ({
         </Link>
       )}
 
-      <div className="flex gap-2 mt-4 items-center justify-between">
+      <div className="flex items-center gap-2 mt-4">
         <ul className="flex items-center gap-2">
           {post.tags.map((tag) => (
             <li key={tag}>

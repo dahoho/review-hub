@@ -3,10 +3,16 @@ export const CATEGORY_MENU_ITEMS = [
     name: "すべて",
   },
   {
+    name: "pull request",
+  },
+  {
     name: "React",
   },
   {
     name: "TypeScript",
+  },
+  {
+    name: "JavaScript",
   },
   {
     name: "Python",

@@ -22,15 +22,6 @@ lowlight.register("css", css);
 lowlight.register("js", js);
 lowlight.register("ts", ts);
 
-// type PostEditorPropsType = {
-//   setValue: UseFormSetValue<{
-//     title: string;
-//     content?: string;
-//     published?: boolean;
-//     tags: string[];
-//   }>;
-// };
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Editor = ({ setValue }: any) => {
   const editor = useEditor({
