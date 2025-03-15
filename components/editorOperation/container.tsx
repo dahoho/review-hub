@@ -43,7 +43,6 @@ export const EditorOperationContainer = ({
   const onSubmit = async (data: postPatchSchemaType) => {
     setIsSubmitting(true);
 
-    console.log("data", data.pullRequestUrl);
     const response = await fetch(`/api/posts/${postId}`, {
       method: "PATCH",
       headers: {
